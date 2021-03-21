@@ -5,7 +5,28 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
-user1 = User.create({name: "ネズミ", nickname:"ねずこ", email: "user1@user.com", password: "nezu111", self_introduction: "ねずこです",category_id: "2"})
-user2 = User.create({name: "ウサギ", nickname:"うさこ", email: "user2@user.com", password: "usa222", self_introduction: "うさこです",category_id: "3"})
-user3 = User.create({name: "タイガー", nickname:"とらこ", email: "user3@user.com", password: "tora222", self_introduction: "とらこです",category_id: "4"})
-user4 = User.create({name: "カメ", nickname:"かめこ", email: "user4@user.com", password: "kame222", self_introduction: "かめこです",category_id: "5"})
+
+5.times do |n|
+  User.create!(
+    email: "sample-#{n + 1}@example.com",
+    name: Faker::Name.name,
+    nickname: "テスト#{n + 1}",
+    password: "d123456#{n + 1}",
+    self_introduction: "テスト#{n + 1}です",
+    category_id: "#{n + 1}"
+  )
+end
+
+5.times do |n|
+  Post.create!(
+    title: "風景#{n + 1}",
+    text: "絵画#{n + 1}です",
+    category_id: "#{n + 1}",
+    user_id: "#{n + 1}",
+    image: ActiveStorage::Blob.create_and_upload!(io: File.open(Rails.root.join("db/test_image/test#{n + 1}.jpg")), filename: "test#{n + 1}.jpg")
+  )
+end
+#  post1 = Post.create({title: "風景", text: "絵画です", category_id: "1", user_id: "1", image: open("#{Rails.root}/db/test_image/test1.jpg")})
+#  post2 = Post.create({title: "彫像", text: "造形です", category_id: "2", user_id: "2", image: open("#{Rails.root}/db/test_image/test2.jpg")})
+#  post3 = Post.create({title: "街並み", text: "写真です", category_id: "3", user_id: "3", image: open("#{Rails.root}/db/test_image/test3.jpg")})
+#  post4 = Post.create({title: "ドキュメント", text: "映像です", category_id: "4", user_id: "4", image: open("#{Rails.root}/db/test_image/test4.jpg")})
