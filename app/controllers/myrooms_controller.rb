@@ -11,6 +11,11 @@ class MyroomsController < ApplicationController
 
   def create
     @post = Post.new(post_params)
+    # if @post.save
+    #   redirect_to myrooms_path
+    # else
+    #   render :new
+    # end
   end
 
   private
