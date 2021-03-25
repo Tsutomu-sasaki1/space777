@@ -1,19 +1,10 @@
- <h1>Space</h1>
+<h1>マイページ</h1>
 <%= form_with(url: search_posts_path, local: true, method: :get, class: "search-form") do |form| %>
   <%= form.text_field :keyword, placeholder: "投稿を検索する", class: "search-input" %>
   <%= form.submit "検索", class: "search-btn" %>
 <% end %>
- <%# 後ほど部分テンプレートにする %>
- <ul class='lists-right'>
-   <% if user_signed_in? %>
-     <li><%= link_to current_user.nickname, myroom_post_path(current_user.id), class: "user-nickname" %></li>
-     <li><%= link_to 'ログアウト', destroy_user_session_path, method: :delete, class: "logout" %></li>
-   <% else %>
-     <li><%= link_to 'ログイン', new_user_session_path, class: "login" %></li>
-     <li><%= link_to '新規登録', new_user_registration_path, class: "sign-up" %></li>
-   <% end %>
- </ul>
- <%# 後ほど部分テンプレートにする %>
+  <%= link_to '新規投稿', new_myroom_path, class: "subtitle"%>
+  <%= link_to 'ユーザー編集', edit_user_registration_path, class: "subtitle"%>
 
 <div class='main'>
   <div class='item-contents'>
@@ -39,6 +30,5 @@
        <% end %>
     </ul>
   </div>
-  <%= link_to '新規投稿ページ', new_myroom_path, class: "subtitle"%>
 </div>
 <%= link_to "トップページへ戻る", root_path %>

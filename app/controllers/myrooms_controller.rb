@@ -1,5 +1,6 @@
 class MyroomsController < ApplicationController
 
+
   def index
     @posts = Post.all
     # binding.pry
@@ -11,11 +12,16 @@ class MyroomsController < ApplicationController
 
   def create
     @post = Post.new(post_params)
-    # if @post.save
-    #   redirect_to myrooms_path
-    # else
-    #   render :new
-    # end
+    if @post.save
+      redirect_to myrooms_path
+    else
+      render :new
+    end
+  end
+
+  def show
+    @post = Post.find_by(id: params[:id])
+    # binding.pry
   end
 
   private

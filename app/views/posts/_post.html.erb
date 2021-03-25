@@ -1,0 +1,11 @@
+<div class='main'>
+  <div class='item-contents'>
+    <li>
+      <%= link_to '詳細', post_path(post.id), method: :get %>
+      <div class='item-img-content'>
+        <p><%= image_tag(post.image, class: "item-img") %>
+        </p>
+      </div>
+    </li>
+  </div>
+</div>
