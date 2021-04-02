@@ -1,8 +1,9 @@
 class Post < ApplicationRecord
+
   with_options presence: true do
+    validates :category_id, numericality: { other_than: 0 }
     validates :title
     validates :text
-    validates :category_id, numericality: { other_than: 0 }
     validates :user_id
   end
   belongs_to :user

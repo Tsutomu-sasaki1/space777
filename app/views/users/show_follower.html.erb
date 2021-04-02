@@ -1,0 +1,10 @@
+<% @user.followers.each do |user| %>
+<table>
+<tr>
+  <td>  <%= user.name %> </td>
+  <td><%= link_to '詳細', post_path(user) %></td>
+</tr>
+
+</table>
+<% end %>
+<p><%= link_to "トップページへ戻る", root_path %></p>
