@@ -47,10 +47,10 @@ Things you may want to cover:
 - has_many : comments, through: :comment_likes, source: :comment
 
 - has_many : user_communities
-- has_many : communities, through: :user_communities, source: :community
+- has_many : communities, through: :user_communities
 
-- has_many : user_chats, dependent: :destroy
-- has_many : chats, through: user_chats, source: :chat
+- has_many : chatroom_users, dependent: :destroy
+- has_many : chatrooms, through: chatroom_users
 
 - has_many : follower, class_name: "Relationship", foreign_key: "follower_id", dependent: :destroy # Relationshipモデルのfollower_idにuser_idを格納(フォロー取得)
 - has_many : followed, class_name: "Relationship", foreign_key: "followed_id", dependent: :destroy # Relationshipモデルのfollowed_idにuser_idを格納(フォロワー取得)
@@ -75,7 +75,7 @@ Things you may want to cover:
 - has_many : comments
 - belongs_to : user
 
-## chats テーブル
+## chatrooms テーブル
 | Column              | Type          | Options                        |
 | ------------------- | ------------- | ------------------------------ |
 <!-- | user_id             | references    | null: false, foreign_key: true | -->
@@ -148,3 +148,9 @@ Things you may want to cover:
 ### Association
 - belongs_to :user
 - belongs_to :comment
+
+## chatroom_users テーブル(中間)
+| Column           | Type       | Options                        |
+| ---------------- | ---------- | ------------------------------ |
+| user_id          | references | null: false, foreign_key: true |
+| chatroom_id      | references | null: false, foreign_key: true |
