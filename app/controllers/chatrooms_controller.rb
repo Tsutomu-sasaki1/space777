@@ -2,7 +2,7 @@ class ChatroomsController < ApplicationController
 
   def index
   end
-  
+
   def new
     @chatroom = Chatroom.new
   end
@@ -10,8 +10,7 @@ class ChatroomsController < ApplicationController
   def create
     @chatroom = Chatroom.new(chatroom_params)
     if @chatroom.save!
-      render :new
-      redirect_to root_path
+      redirect_to myroom_post_path(@chatroom)
     else
       render :new
     end

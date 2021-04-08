@@ -3,6 +3,7 @@ class MyroomsController < ApplicationController
 
   def index
     @posts = Post.all
+    chatroom = Chatroom.find(params[:id])
     # binding.pry
   end
 

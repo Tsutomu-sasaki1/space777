@@ -3,9 +3,10 @@
   <%= form.text_field :keyword, placeholder: "投稿を検索する", class: "search-input" %>
   <%= form.submit "検索", class: "search-btn" %>
 <% end %>
+  <%= render 'users/stats' %>
   <%= link_to '新規投稿', new_myroom_path, class: "subtitle"%>
   <%= link_to 'ユーザー編集', edit_user_registration_path, class: "subtitle"%>
-  <%= link_to "チャットルーム", new_chatroom_path, class: "subtitle"%>
+  <%= link_to "チャットルーム新規作成", new_chatroom_path, class: "subtitle"%>
 
 <div class='main'>
   <div class='item-contents'>
@@ -32,4 +33,9 @@
     </ul>
   </div>
 </div>
-<%= link_to "トップページへ戻る", root_path %>
+<p><%= link_to "トップページへ戻る", root_path %></p>
+<div class='wrapper'>
+  <div class='side-bar'>
+    <%= render "chatrooms/side_bar" %>
+  </div>
+</div>

@@ -1,0 +1,13 @@
+<div class="side-bar-header">
+  参加チャットルーム一覧
+</div>
+<%# チャットルーム一覧 %>
+<div class="rooms">
+  <% current_user.chatrooms.each do |chatroom| %>
+    <div class="room">
+      <div class="room-name">
+        <%= link_to chatroom.room_name, new_chatroom_message_path(chatroom) %>
+      </div>
+    </div>
+  <% end %>
+</div>

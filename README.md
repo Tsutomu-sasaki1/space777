@@ -43,8 +43,8 @@ Things you may want to cover:
 - has_many : post_likes, dependent: :destroy
 - has_many : posts, through: :post_likes, source: :post, dependent: :destroy 
 
-- has_many : comment_likes, dependent: :destroy
-- has_many : comments, through: :comment_likes, source: :comment
+- has_many : message_likes, dependent: :destroy
+- has_many : messages, through: :comment_likes, source: :comment
 
 - has_many : user_communities
 - has_many : communities, through: :user_communities
@@ -72,7 +72,7 @@ Things you may want to cover:
 - has_many : users, through: post_likes, source: :user, dependent: :destroy
 
 - has_many : images
-- has_many : comments
+- has_many : messages
 - belongs_to : user
 
 ## chatrooms テーブル
@@ -80,21 +80,21 @@ Things you may want to cover:
 | ------------------- | ------------- | ------------------------------ |
 <!-- | user_id             | references    | null: false, foreign_key: true | -->
 ### Association
-- has_many : comments
+- has_many : messages
 
 - has_many :user_chats
 - has_many :users, through: :user_chats, source: :user
 
-## comments テーブル
+## messages テーブル
 | Column       | Type       | Options                        |
 | ------------ | ---------- | ------------------------------ |
 | comment      | string     | null: false                    |
 | user_id      | references | null: false, foreign_key: true |
 | post_id      | references | null: false, foreign_key: true |
-| chat_id      | references | null: false, foreign_key: true |
+| chatroom_id  | references | null: false, foreign_key: true |
 | community_id | references | null: false, foreign_key: true |
 ### Association
-- has_many :comment_likes
+- has_many :message_likes
 - has_many :users, through: :comment_likes, source: :user
 
 - belongs_to : post
@@ -104,9 +104,9 @@ Things you may want to cover:
 ## communities テーブル
 | Column       | Type       | Options                        |
 | ------------ | ---------- | ------------------------------ |
-| comment_id   | references | null: false, foreign_key: true |
+| message_id   | references | null: false, foreign_key: true |
 ### Association
-- has_many : comments
+- has_many : messages
 
 - has_many : user_communities
 - has_many : users, through: :user_communities, source: :user
@@ -147,7 +147,7 @@ Things you may want to cover:
 | comment_id   | references | null: false, foreign_key: true |
 ### Association
 - belongs_to :user
-- belongs_to :comment
+- belongs_to :message
 
 ## chatroom_users テーブル(中間)
 | Column           | Type       | Options                        |
