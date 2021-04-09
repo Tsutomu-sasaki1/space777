@@ -2,6 +2,7 @@ class PostsController < ApplicationController
 
   def myroom
     @posts = Post.where(user_id: params[:id])
+    
   end
 
   def index
