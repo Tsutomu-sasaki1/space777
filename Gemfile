@@ -63,3 +63,6 @@ gem "pry-byebug", group: :development
 gem 'active_hash'
 gem 'mini_magick'
 gem 'image_processing', '~> 1.2'
+gem 'jquery-rails', '4.3.3'
+gem 'fullcalendar-rails'
+gem 'momentjs-rails'
