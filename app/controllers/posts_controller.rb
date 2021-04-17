@@ -1,12 +1,13 @@
 class PostsController < ApplicationController
 
-  def myroom
-    @posts = Post.where(user_id: params[:id])
-    
-  end
-
   def index
     @posts = Post.all
+  end
+  
+  def myroom
+    @posts = Post.where(user_id: params[:id])
+    @events = Event.where(user_id: @posts.ids)
+    @event = Event.new
   end
 
   def show

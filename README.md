@@ -154,3 +154,17 @@ Things you may want to cover:
 | ---------------- | ---------- | ------------------------------ |
 | user_id          | references | null: false, foreign_key: true |
 | chatroom_id      | references | null: false, foreign_key: true |
+
+- belongs_to :user
+- belongs_to :chatroom
+
+## event テーブル
+| Column       | Type       | Options                        |
+| ------------ | ---------- | ------------------------------ |
+| event_title  | string     | null: false                    |
+| body         | references | null: false, foreign_key: true |
+| disp_flg     | references | null: false, foreign_key: true |
+| start        | references | null: false, foreign_key: true |
+| end          | references | null: false, foreign_key: true |
+| user_id      |            | null: false, foreign_key: true |
+| allday       | references |                                |

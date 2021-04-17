@@ -24,7 +24,7 @@ class User < ApplicationRecord
 
   has_many :messages
 
-
+  has_many :events
 
   def following?(user)
     following_relationships.find_by(following_id: user.id)

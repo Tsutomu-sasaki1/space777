@@ -23,4 +23,5 @@ Rails.application.routes.draw do
   end
   resources :myrooms 
   resources :relationships,       only: [:create, :destroy]
+  resources :events
 end

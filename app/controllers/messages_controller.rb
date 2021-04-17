@@ -3,7 +3,6 @@ class MessagesController < ApplicationController
     @message = Message.new
     @room = Chatroom.find(params[:chatroom_id])
     @messages = @room.messages.includes(:user)
-    # binding.pry
   end
   
   def create
