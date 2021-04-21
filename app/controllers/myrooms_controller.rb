@@ -14,7 +14,7 @@ class MyroomsController < ApplicationController
   def create
     @post = Post.new(post_params)
     if @post.save
-      redirect_to myrooms_path
+      redirect_to controller: :posts, action: :index
     else
       render :new
     end
