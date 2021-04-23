@@ -22,14 +22,7 @@
       <% @posts.each do|post| %>
         <%= link_to post_path(post.id) do %>
           <li class='list'>
-            <p><h6>name:<%= post.user.nickname %></h6>
-            </p>
-            <p><h6>Title:<%= post.title %></h6>
-            </p>
-            <p><h6>Text:<%= post.text %></h6>
-            </p>
-            <p><h6>Category:<%= post.category.name %></h6>
-            </p>
+
             <div class='item-img-content'>
               <p><%= image_tag(post.image, class: "item-img") %>
               </p>
