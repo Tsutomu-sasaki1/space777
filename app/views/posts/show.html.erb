@@ -1,14 +1,14 @@
 <h1><%= @post.user.name  %>さんの投稿</h1>
 <p>
 <% if user_signed_in? %>
-  <%= render 'users/follow_form' %>
+  <% unless current_user.id == @post.user.id %>
+    <%= render 'users/follow_form' %>
+  <% end %>
 <% end %>
 </p>
 <section class="stats">
   <%= render 'users/stats' %>
 </section>
- <%# <% binding.pry%> 
- <%# <% @posts.each do |post| %> 
   <div class="item-show">
     <div class="item-box">
       <h2 class="name">
@@ -24,7 +24,6 @@
       </div>
     </div>
   </div>
- <%# <% end %>
     <% if user_signed_in? %>
       <% if current_user.id == @post.user.id %>
         <%= link_to "投稿の編集", edit_myroom_path, method: :get, class: "item-red-btn" %>

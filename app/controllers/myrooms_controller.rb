@@ -4,7 +4,6 @@ class MyroomsController < ApplicationController
   def index
     @posts = Post.all
     chatroom = Chatroom.find(params[:id])
-    # binding.pry
   end
 
   def new
@@ -22,7 +21,6 @@ class MyroomsController < ApplicationController
 
   def show
     @post = Post.find_by(id: params[:id])
-    # binding.pry
   end
 
   private
