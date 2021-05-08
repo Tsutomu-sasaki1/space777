@@ -29,7 +29,6 @@ class User < ApplicationRecord
   has_many :posts, dependent: :destroy
 
   def following?(user)
-    # binding.pry
     following_relationships.find_by(following_id: user.id)
   end
 

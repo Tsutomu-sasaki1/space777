@@ -1,0 +1,39 @@
+<h2>編集ページ</h2>
+
+<%= form_with model:@post, url: myroom_path, local: true do |f| %> 
+ <%# <%= render "devise/shared/error_messages", resource: resource %> 
+
+  <div class="img-upload">
+    <%# <div class="weight-bold-text">
+      出品画像
+      <span class="indispensable">必須</span>
+    </div> %>
+    <div class="click-upload">
+      <p>
+        クリックして作品をアップロード
+      </p>
+      <%= f.file_field :image, id:"item-image" %>
+    </div>
+  </div>
+
+  <div class="field">
+    <%= f.label :title %><br />
+    <%= f.text_area :title, autofocus: true, placeholder:"例) タイトル入力", maxlength:"40" %>
+  </div>
+
+    <div class="field">
+    <%= f.label :text %><br />
+    <%= f.text_area :text, autofocus: true,  placeholder:"例) テキスト入力", maxlength:"40" %>
+  </div>
+
+  <div class="form">
+    <div class="weight-bold-text">
+      Category
+      <span class="indispensable">必須</span>
+    </div>
+    <%= f.collection_select(:category_id, Category.all, :id, :name, {}, {class:"select-box", id:"item-category"}) %>
+
+  <div class="actions">
+    <%= f.submit "編集登録" %>
+  </div>
+<% end %>

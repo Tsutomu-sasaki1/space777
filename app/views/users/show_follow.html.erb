@@ -1,9 +1,9 @@
-<h3>フォロー 一覧</h3>
-<% @user.followings.each do |user| %>
+<h3>フォローしているユーザー</h3>
+<% @user.user.followings.each do |user| %>
 <table>
 <tr>
   <td>  <%= user.name %> </td>
-  <td><%= link_to '詳細', post_path(user) %></td>
+  <td><%= link_to '詳細', user_path(user) %></td>
 </tr>
 
 </table>

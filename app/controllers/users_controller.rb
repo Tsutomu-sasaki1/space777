@@ -6,19 +6,17 @@ class UsersController < ApplicationController
     else
        @user = User.find(params[:id])
     end
-    # binding.pry
   end
   
   def following
-    @user  = User.find(params[:id])
-    @users = @user.followings
+    @user  = Post.find(params[:id])
+    @users = @user.user.followings
     render 'show_follow'
   end
   
   def followers
-    @user  = User.find(params[:id])
-    @users = @user.followers
-    # binding.pry
+    @user  = Post.find(params[:id])
+    @users = @user.user.followers
     render 'show_follower'
   end
 end

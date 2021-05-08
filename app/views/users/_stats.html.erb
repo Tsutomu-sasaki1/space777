@@ -1,16 +1,16 @@
-<% @user ||= current_user %>
+<% @post ||= current_user %>
 <div class="stats">
-  <a href="<%= following_user_path(@user) %>">
+  <a href="<%= following_user_path(@post) %>">
     <strong id="following" class="stat">
-      <%= @user.followings.count %>
+      <%= @post.user.followings.count %>
     </strong>
-    フォロー
+    フォローしている人
   </a>
-  <a href="<%= followers_user_path(@user) %>">
+  <a href="<%= followers_user_path(@post) %>">
     <strong id="followers" class="stat">
-      <%= @user.followers.count %>
+      <%= @post.user.followers.count %>
     </strong>
-    フォロワー
+    フォロ-されている人
   </a>
 </div>
 <p><%= link_to "トップページへ戻る", root_path %></p>

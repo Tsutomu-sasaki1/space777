@@ -1,9 +1,9 @@
-<h3>フォロワー 一覧</h3>
-<% @user.followers.each do |user| %>
+<h3>フォローされているユーザー</h3>
+<% @user.user.followers.each do |user| %>
 <table>
 <tr>
   <td>  <%= user.name %> </td>
-  <td><%= link_to '詳細', post_path(user) %></td>
+  <td><%= link_to '詳細', user_path(user) %></td>
 </tr>
 
 </table>
