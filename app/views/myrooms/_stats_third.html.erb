@@ -2,13 +2,13 @@
 <div class="stats">
   <a href="<%= following_user_path(@post) %>">
     <strong id="following" class="stat">
-      <%= @post.followings.count %>
+      <%= @post.user.followings.count %>
     </strong>
     フォローしている人
   </a>
   <a href="<%= followers_user_path(@post) %>">
     <strong id="followers" class="stat">
-      <%= @post.followers.count %>
+      <%= @post.user.followers.count %>
     </strong>
     フォロ-されている人
   </a>

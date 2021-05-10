@@ -5,16 +5,16 @@ class PostsController < ApplicationController
   end
   
   def myroom
-    @post = Post.find_by(user_id: params[:id])
+    @post = User.find(params[:id])
     @posts = Post.where(user_id: params[:id])
-    @events = Event.where(user_id: @post.id)
-    @event = Event.new
+    # @events = Event.where(user_id: @post.id)
+    # @event = Event.new
   end
 
   def show
     @post = Post.find(params[:id])
-    @posts = Post.where(user_id: params[:id])
-    @user = User.find(params[:id])
+    # @posts = Post.where(user_id: params[:id])
+    # @user = User.find(params[:id])
   end
   
   def search

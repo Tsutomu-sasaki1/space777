@@ -1,25 +1,34 @@
-<div class='main'>
-  <div class='item-contents'>
-    <h3 class='list2'>投稿一覧</h3>
-    <ul class='item-lists'>
-       <% @posts.each do|post|%>
-         <%= link_to  user_path(post.id) do %>
-           <li class='list'>
-             <p><h6>name:<%= post.user.nickname %></h6>
-             </p>
-             <p><h6>Title:<%= post.title %></h6>
-             </p>
-             <p><h6>Text:<%= post.text %></h6>
-             </p>
-             <p><h6>Category:<%= post.category.name %></h6>
-             </p>
-             <div class='item-img-content'>
-               <p><%= image_tag(post.image, class: "item-img") %>
-               </p>
-             </div>
-           </li>
-         <% end %>
-       <% end %>
-    </ul>
+<h1><%= @post.user.name  %>さんの投稿</h1>
+<p>
+<% if user_signed_in? %>
+  <% unless current_user.id == @post.id %>
+  <%= render 'users/follow_form' %>
+<% end %>
+</p>
+<section class="stats">
+  <%= render 'users/stats_second' %>
+</section>
+  <div class="item-show">
+    <div class="item-box">
+      <h2 class="name">
+        <%= @post.title %>
+      </h2>
+      <div class="item-img-content">
+        <%= image_tag @post.image ,class:"item-box-img" %>
+      </div>
+      <div>
+        <span class="item-postage">
+          <%= @post.category.name %>
+        </span>
+      </div>
+    </div>
   </div>
-</div>
+<% end %>
+    <% if user_signed_in? %>
+      <% if current_user.id == @post.user.id %>
+        <%= link_to "投稿の編集", edit_myroom_path, method: :get, class: "item-red-btn" %>
+        <p class="or-text">or</p>
+        <%= link_to "削除", myroom_path, method: :delete, class:"item-destroy" %>
+      <% end %>
+    <% end %>
+<p><%= link_to "戻る", root_path %></p>

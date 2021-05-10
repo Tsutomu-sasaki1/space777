@@ -1,12 +1,21 @@
-<h1>マイページ</h1>
-<%= form_with(url: search_posts_path, local: true, method: :get, class: "search-form") do |form| %>
-  <%= form.text_field :keyword, placeholder: "投稿を検索する", class: "search-input" %>
-  <%= form.submit "検索", class: "search-btn" %>
+<h1><%=@post.name%>さんのページ</h1>
+<% if user_signed_in? %>
+  <%if current_user.id == @post.id %>
+    <%= form_with(url: search_posts_path, local: true, method: :get, class: "search-form") do |form| %>
+      <%= form.text_field :keyword, placeholder: "投稿を検索する", class: "search-input" %>
+      <%= form.submit "検索", class: "search-btn" %>
+    <% end %>
+      <%= render 'users/stats' %>
+      <%= link_to '新規投稿', new_myroom_path, class: "subtitle"%>
+      <%= link_to 'ユーザー編集', edit_user_registration_path, class: "subtitle"%>
+      <%= link_to "チャットルーム新規作成", new_chatroom_path, class: "subtitle"%>
+      <div class='wrapper'>
+        <div class='side-bar'>
+          <%= render "chatrooms/side_bar" %>
+        </div>
+      </div>
+  <% end %>    
 <% end %>
-  <%= render 'users/stats' %>
-  <%= link_to '新規投稿', new_myroom_path, class: "subtitle"%>
-  <%= link_to 'ユーザー編集', edit_user_registration_path, class: "subtitle"%>
-  <%= link_to "チャットルーム新規作成", new_chatroom_path, class: "subtitle"%>
 
 <div class='main'>
   <div class='item-contents'>
@@ -34,9 +43,5 @@
   </div>
 </div>
 <p><%= link_to "トップページへ戻る", root_path %></p>
-<div class='wrapper'>
-  <div class='side-bar'>
-    <%= render "chatrooms/side_bar" %>
-  </div>
-</div>
-<%= render "event" %>
+
+<%# <%= render "event" %> %>

@@ -20,13 +20,16 @@ class MyroomsController < ApplicationController
   end
 
   def show
-    @post = Post.find_by(id: params[:id])
+    @post = Post.find(params[:id])
+    # binding.pry
+    # @posts = Post.find(params[:id])
+
   end
 
   def update
     @post = Post.find(params[:id])
     if @post.update(post_params)
-      redirect_to controller: :posts, action: :myroom 
+      redirect_to myroom_post_path(@post.user.id)
     else
       render :edit
     end
@@ -36,11 +39,11 @@ class MyroomsController < ApplicationController
     @post = Post.find(params[:id])
   end
 
-  # def destroy
-  #   @post = Post.find(params[:id])
-  #   @post.destroy
-  #   redirect_to controller: :posts, action: :myroom
-  # end
+  def destroy
+    @post = Post.find(params[:id])
+    @post.destroy
+    redirect_to myroom_post_path(@post.user.id)
+  end
 
   private
 

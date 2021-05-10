@@ -1,1 +1,35 @@
-マイルーム
+<h2>マイルームshow</h2>
+<h1><%= @post.user.name  %>さんの投稿</h1>
+<p>
+<% if user_signed_in? %>
+  <% unless current_user.id == @post.id %>
+  <%= render 'users/follow_form' %>
+<% end %>
+</p>
+<section class="stats">
+  <%= render 'stats_third' %>
+</section>
+  <div class="item-show">
+    <div class="item-box">
+      <h2 class="name">
+        <%= @post.title %>
+      </h2>
+      <div class="item-img-content">
+        <%= image_tag @post.image ,class:"item-box-img" %>
+      </div>
+      <div>
+        <span class="item-postage">
+          <%= @post.category.name %>
+        </span>
+      </div>
+    </div>
+  </div>
+<% end %>
+    <% if user_signed_in? %>
+      <% if current_user.id == @post.user.id %>
+        <%= link_to "投稿の編集", edit_myroom_path, method: :get, class: "item-red-btn" %>
+        <p class="or-text">or</p>
+        <%= link_to "削除", myroom_path, method: :delete, class:"item-destroy" %>
+      <% end %>
+    <% end %>
+<p><%= link_to "戻る", root_path %></p>
