@@ -66,3 +66,4 @@ gem 'image_processing', '~> 1.2'
 gem 'jquery-rails', '4.3.3'
 gem 'fullcalendar-rails'
 gem 'momentjs-rails'
+gem 'aws-sdk-s3', require: false
