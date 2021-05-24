@@ -1,19 +1,14 @@
 <h2>編集ページ</h2>
 
-<%= form_with model:@post, url: myroom_path, local: true do |f| %> 
- <%# <%= render "devise/shared/error_messages", resource: resource %> 
-
+<%= form_with model:@post, url: myroom_path,local: true do |f| %> 
   <div class="img-upload">
-    <%# <div class="weight-bold-text">
-      出品画像
-      <span class="indispensable">必須</span>
-    </div> %>
     <div class="click-upload">
       <p>
         クリックして作品をアップロード
       </p>
-      <%= f.file_field :image, id:"item-image" %>
+      <span id="item-image" ><%= f.file_field :image %></span>
     </div>
+      <div id="image-list"></div>
   </div>
 
   <div class="field">
