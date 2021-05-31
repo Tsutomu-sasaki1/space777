@@ -8,27 +8,25 @@
 <section class="stats">
   <%= render 'users/stats_second' %>
 </section>
-  <div class="item-show">
-    <div class="item-box">
-      <h2 class="name">
-        <%= @post.title %>
-      </h2>
-      <div class="item-img-content">
-        <%= image_tag @post.image ,class:"item-box-img" %>
-      </div>
-      <div>
-        <span class="item-postage">
-          <%= @post.category.name %>
-        </span>
-      </div>
-    </div>
-  </div>
-<% end %>
-    <% if user_signed_in? %>
-      <% if current_user.id == @post.user.id %>
-        <%= link_to "投稿の編集", edit_myroom_path, method: :get, class: "item-red-btn" %>
-        <p class="or-text">or</p>
-        <%= link_to "削除", myroom_path, method: :delete, class:"item-destroy" %>
-      <% end %>
+    <ul class='item-lists'>
+      <li class='list'>
+        <div class='item-img-content'>
+          <%# <% @post.each do |post| %> %>
+            <%# <%= link_to user_path(post.id) do %> %>
+              <% @post.images.each do |image| %>
+                <%= image_tag(image, class: "item-img") %>
+              <% end %>
+            <%# <% end %> %>
+          <%# <% end %> %>
+        </div>
+      </li>
+    </ul>
+<%end%>
+  <% if user_signed_in? %>
+    <% if current_user.id == @post.user.id %>
+      <%= link_to "投稿の編集", edit_myroom_path, method: :get, class: "item-red-btn" %>
+      <p class="or-text">or</p>
+      <%= link_to "削除", myroom_path, method: :delete, class:"item-destroy" %>
     <% end %>
+  <% end %>
 <p><%= link_to "戻る", root_path %></p>

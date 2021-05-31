@@ -12,7 +12,8 @@ class MyroomsController < ApplicationController
 
   def create
     @post = Post.new(post_params)
-    if @post.save
+    if @post.save!
+      flash[:success] = "投稿できました！"
       redirect_to controller: :posts, action: :index
     else
       render :new
@@ -48,7 +49,7 @@ class MyroomsController < ApplicationController
   private
 
   def post_params
-    params.require(:post).permit(:title, :text, :category_id, :image).merge(user_id: current_user.id)
+    params.require(:post).permit(:title, :text, :category_id, images: []).merge(user_id: current_user.id)
   end
   
 end

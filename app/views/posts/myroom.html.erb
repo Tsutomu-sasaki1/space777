@@ -21,24 +21,17 @@
   <div class='item-contents'>
     <h3 class='list2'>投稿一覧</h3>
     <ul class='item-lists'>
-       <% @posts.each do|post|%>
-         <%= link_to  user_path(post.id) do %>
-           <li class='list'>
-             <p><h6>name:<%= post.user.nickname %></h6>
-             </p>
-             <p><h6>Title:<%= post.title %></h6>
-             </p>
-             <p><h6>Text:<%= post.text %></h6>
-             </p>
-             <p><h6>Category:<%= post.category.name %></h6>
-             </p>
-             <div class='item-img-content'>
-               <p><%= image_tag(post.image, class: "item-img") %>
-               </p>
-             </div>
-           </li>
-         <% end %>
-       <% end %>
+      <li class='list'>
+        <div class='item-img-content'>
+          <% @posts.each do |post| %>
+            <%= link_to user_path(post.id) do %>
+              <% post.images.each do |image| %>
+                <%= image_tag(image, class: "item-img") %>
+              <% end %>
+            <% end %>
+          <% end %>
+        </div>
+      </li>
     </ul>
   </div>
 </div>

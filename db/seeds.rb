@@ -19,10 +19,10 @@ end
 
 5.times do |n|
   Post.create!(
-    title: "風景#{n + 1}",
-    text: "絵画#{n + 1}です",
+    title: "タイトル#{n + 1}",
+    text: "テキスト#{n + 1}です",
     category_id: "#{n + 1}",
     user_id: "#{n + 1}",
-    image: ActiveStorage::Blob.create_and_upload!(io: File.open(Rails.root.join("db/test_image/test#{n + 1}.jpg")), filename: "test#{n + 1}.jpg")
+    images: ActiveStorage::Blob.create_and_upload!(io: File.open(Rails.root.join("db/test_image/test#{n + 1}.jpg")), filename: "test#{n + 1}.jpg")
   )
 end

@@ -6,11 +6,13 @@
       <p>
         クリックして作品をアップロード
       </p>
-      <span id="item-image" ><%= f.file_field :image %></span>
+      <span id="item-image" ><%= f.file_field :images, multiple: true %></span>
     </div>
       <div id="image-list"></div>
   </div>
-
+    <% @post.images.each do |image| %>
+      <%= image_tag image, class: 'images' %>
+    <% end %>
   <div class="field">
     <%= f.label :title %><br />
     <%= f.text_area :title, autofocus: true, placeholder:"例) タイトル入力", maxlength:"40" %>
@@ -32,3 +34,5 @@
     <%= f.submit "登録" %>
   </div>
 <% end %>
+<p><%= link_to "トップページへ戻る", root_path %></p>
+
