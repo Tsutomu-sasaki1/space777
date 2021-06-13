@@ -5,7 +5,7 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable
 
   with_options presence: true do
-    validates :category_id, numericality: { other_than: 0 }
+    validates :category_id 
     validates :name
     validates :nickname
     validates :self_introduction
