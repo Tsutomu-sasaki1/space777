@@ -24,9 +24,9 @@
       <li class='list'>
         <div class='item-img-content'>
           <% @posts.each do |post| %>
-            <%= link_to user_path(post.id) do %>
               <% post.images.each do |image| %>
                 <%= image_tag(image, class: "item-img") %>
+                <%= link_to user_path(post.id) do %>
               <% end %>
             <% end %>
           <% end %>
@@ -35,6 +35,6 @@
     </ul>
   </div>
 </div>
-<p><%= link_to "トップページへ戻る", root_path %></p>
-
+<p><%= link_to "トップページへ戻る", root_path ,data: { confirm: "よろしいですか？"}%></p>
+  <% breadcrumb :myroom %>
 <%# <%= render "event" %> %>

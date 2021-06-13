@@ -24,7 +24,7 @@
     </ul>
     <% if user_signed_in? %>
       <% if current_user.id == @post.user.id %>
-        <%= link_to "投稿の編集", edit_myroom_path, method: :get, class: "item-red-btn" %>
+        <%= link_to "投稿の編集", edit_myroom_path,remote: true, method: :get, class: "item-red-btn" %>
         <p class="or-text">or</p>
         <%= link_to "削除", myroom_path, method: :delete, class:"item-destroy" %>
       <% end %>

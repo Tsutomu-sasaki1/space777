@@ -1,0 +1,8 @@
+<div class="stats">
+  <a href="<%= followers_user_path(@post.user_id) %>">
+    <strong id="followers" class="stat">
+      <%= @post.user.followers.count %>
+    </strong>
+    フォロ-されている人
+  </a>
+</div>

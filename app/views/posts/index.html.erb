@@ -1,6 +1,9 @@
+  <% breadcrumb :root %>
  <h1>Space</h1>
 <%= form_with(url: search_posts_path, local: true, method: :get, class: "search-form") do |form| %>
   <%= form.text_field :keyword, placeholder: "投稿を検索する", class: "search-input" %>
+  <%= form.collection_select(:keyword, Category.all, :id, :name, {}, {class:"select-box", id:"item-category"}) %>
+
   <%= form.submit "検索", class: "search-btn" %>
 <% end %>
  <%# 後ほど部分テンプレートにする %>
@@ -33,5 +36,3 @@
     </ul>
   </div>
   <%= link_to '新規投稿ページ', new_myroom_path, class: "subtitle"%>
-</div>
-<%= link_to "トップページへ戻る", root_path %>

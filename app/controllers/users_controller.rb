@@ -9,7 +9,7 @@ class UsersController < ApplicationController
   end
   
   def following
-    @user  = User.find(params[:id])
+    @user  = User.find(params[:id]) #|| Post.find(params[:id])
     @users = @user.followings
     render 'show_follow'
   end

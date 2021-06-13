@@ -19,6 +19,7 @@ class PostsController < ApplicationController
   
   def search
     @posts = Post.search(params[:keyword])
+    # binding.pry
   end
 
 end

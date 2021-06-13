@@ -1,0 +1,8 @@
+<div class="stats">
+  <a href="<%= following_user_path(@post.user_id) %>">
+    <strong id="following" class="stat">
+      <%= @post.user.followings.count %>
+    </strong>
+    フォローしている人
+  </a>
+</div>
