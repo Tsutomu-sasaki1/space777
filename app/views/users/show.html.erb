@@ -16,9 +16,7 @@
               <% @post.images.each do |image| %>
                 <%= image_tag(image, class: "item-img") %>
               <% end %>
-              <% if @post.youtube_url.present?%>
                 <iframe src="https://www.youtube.com/embed/<%= @post.youtube_url%>" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-              <% end %>
             <%# <% end %> %>
           <%# <% end %> %>
         </div>
