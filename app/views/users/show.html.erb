@@ -16,6 +16,9 @@
               <% @post.images.each do |image| %>
                 <%= image_tag(image, class: "item-img") %>
               <% end %>
+              <% if @post.youtube_url.present?%>
+                <iframe src="https://www.youtube.com/embed/<%= @post.youtube_url%>" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+              <% end %>
             <%# <% end %> %>
           <%# <% end %> %>
         </div>
@@ -31,3 +34,4 @@
   <% end %>
 <p><%= link_to "戻る", root_path %></p>
 <% breadcrumb :index_show %>
+  <li><%= link_to @post.user.name+"さんの全投稿を見る", myroom_post_path(@post.user_id) %></li>

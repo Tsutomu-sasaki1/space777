@@ -1,7 +1,7 @@
   <% breadcrumb :root %>
  <h1>Space</h1>
 <%= form_with(url: search_posts_path, local: true, method: :get, class: "search-form") do |form| %>
-  <%= form.text_field :keyword, placeholder: "投稿を検索する", class: "search-input" %>
+  <%# <%= form.text_field :keyword, placeholder: "タイトル、カテゴリー名前で検索する", class: "search-input" %> %>
   <%= form.collection_select(:keyword, Category.all, :id, :name, {}, {class:"select-box", id:"item-category"}) %>
 
   <%= form.submit "検索", class: "search-btn" %>
@@ -26,9 +26,13 @@
         <div class='item-img-content'>
           <% @posts.each do |post| %>
             <%= link_to user_path(post.id) do %>
+              <% if post.youtube_url.present?%>
+                <iframe src="https://www.youtube.com/embed/<%= post.youtube_url%>" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+              <% end %>
               <% post.images.each do |image| %>
                 <%= image_tag(image, class: "item-img") %>
               <% end %>
+              <%= post.user.nickname %>
             <% end %>
           <% end %>
         </div>

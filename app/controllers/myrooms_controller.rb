@@ -12,12 +12,24 @@ class MyroomsController < ApplicationController
 
   def create
     @post = Post.new(post_params)
-    if @post.save!
-      flash[:success] = "投稿できました！"
-      redirect_to controller: :posts, action: :index
-    else
-      render :new
+
+    url = params[:post][:youtube_url]
+    url = url.last(11)
+    @post.youtube_url = url
+    
+    respond_to do |format|
+      # binding.pry
+      if @post.save!
+        format.html { redirect_to controller: :posts, action: :index, notice: 'Post was successfully created.' }
+        format.json { render :myroom, status: :created, location: @post }
+        
+      else
+        format.html { render :new }
+        format.json { render json: @post.errors, status: :unprocessable_entity }
+
+      end
     end
+
   end
 
   def show
@@ -49,7 +61,7 @@ class MyroomsController < ApplicationController
   private
 
   def post_params
-    params.require(:post).permit(:title, :text, :category_id, images: []).merge(user_id: current_user.id)
+    params.require(:post).permit(:title, :text, :category_id,:youtube_url, images: []).merge(user_id: current_user.id)
   end
   
 end
